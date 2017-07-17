@@ -5,17 +5,16 @@ import(
 	"net/http"
 	"fmt"
 	"strconv"
-	"os"
 )
 
 //Init global variables
 var num = 0
-var id
+var id = "NO_HOSTNAME_FOUND"
 
 //Handles requests from root ("/")
 func handleRoot(w http.ResponseWriter, r *http.Request) {
 	num++
-	fmt.Fprintf(w , "This is a Go webserver! \nThis webpage has been loaded "+strconv.Itoa(num)+" times.")
+	fmt.Fprintf(w , "This is a Go webserver! \nThis webpage has been loaded "+strconv.Itoa(num)+" times.\nServer running on: "+id)
 }
 
 //Handles requests for favicon.ico to take these requests away from root
@@ -27,14 +26,14 @@ func handleIcon(w http.ResponseWriter, r *http.Request) {
 func main(){
 	//Sets port number and gets dockerID
 	port := 7001
-	id := getDockerID()
+	id = getDockerID()
 	
 	//Registers handlers for GET and POST requests
 	http.HandleFunc("/favicon.ico", handleIcon)
 	http.HandleFunc("/", handleRoot)
 	
 	//Prints start message
-	fmt.Println("Server Started on :"+strconv.Itoa(port))
+	fmt.Println("Server Started on port:"+strconv.Itoa(port))
 	
 	//Initializes listening thread
 	http.ListenAndServe(":"+strconv.Itoa(port), nil)

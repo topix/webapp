@@ -2,11 +2,12 @@ package main
 
 import(
 	"os"
+	"fmt"
 )
 
 //Reads env.variable "DOCKER_ID" for the dockerID and returns the value, if the variable do not exixts it returns false, otherwise true
-func getDockerID() (string,bool){
-	id, exists := os.LookupEnv("Docker_ID")
-	return id, exists
+func getDockerID() (string){
+	id, _ := os.Hostname()
+	return id
 }
 
