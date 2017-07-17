@@ -17,7 +17,7 @@ func handleRoot(w http.ResponseWriter, r *http.Request) {
 }
 
 func handleIcon(w http.ResponseWriter, r *http.Request) {
-	
+	//Code for favicon goes here!
 }
 
 
