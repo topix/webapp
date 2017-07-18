@@ -2,7 +2,6 @@ package main
 
 import(
 	"os"
-	"fmt"
 )
 
 //Reads env.variable "DOCKER_ID" for the dockerID and returns the value, if the variable do not exixts it returns false, otherwise true
